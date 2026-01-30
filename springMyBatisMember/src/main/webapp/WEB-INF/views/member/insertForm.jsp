@@ -166,11 +166,6 @@
             <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required>
         </div>
 
-        <div class="form-group">
-            <label for="coin">등록코인</label>
-            <input type="number" id="coin" name="coin" placeholder="숫자만입력" >
-        </div>
-        
         <div class="btn-area">
             <a href="/member/memberList" class="btn btn-cancel">회원리스트</a>
             <button type="submit" class="btn btn-cancel">회원등록</button>

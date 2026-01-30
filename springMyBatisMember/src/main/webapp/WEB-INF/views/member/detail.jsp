@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -137,22 +138,42 @@ body {
 
 	<div class="detail-container">
 		<div class="detail-header">
-			<span class="post-no">게시판번호 ${board.no}</span>
-			<h1>${board.title}</h1>
+			<span class="post-no">회원번호 ${member.no}</span>
+			<h1>${member.id}</h1>
 			<div class="post-info">
-				<span>WRITER: <b>${board.writer}</b></span> <span>DATE: <b><fmt:formatDate
-							value="${board.regDate}" pattern="yyyy.MM.dd HH:mm" /></b></span>
+				<span>name: <b>${member.name}</b></span> <span>DATE: <b><fmt:formatDate
+							value="${member.regDate}" pattern="yyyy.MM.dd HH:mm" /></b></span>
 			</div>
 		</div>
 
-		<div class="detail-content">${board.content}</div>
+		<div class="btn-area">
+			<form:form modelAttribute="member">
+				<form:select path="authList[0].auth" disabled="true">
+					<form:option value="" label="=== 선택해 주세요 ===" />
+					<form:option value="ROLE_USER" label="사용자" />
+					<form:option value="ROLE_MEMBER" label="회원" />
+					<form:option value="ROLE_ADMIN" label="관리자" />
+				</form:select>
+				<form:select path="authList[1].auth" disabled="true">
+					<form:option value="" label="=== 선택해 주세요 ===" />
+					<form:option value="ROLE_USER" label="사용자" />
+					<form:option value="ROLE_MEMBER" label="회원" />
+					<form:option value="ROLE_ADMIN" label="관리자" />
+				</form:select>
+				<form:select path="authList[2].auth" disabled="true">
+					<form:option value="" label="=== 선택해 주세요 ===" />
+					<form:option value="ROLE_USER" label="사용자" />
+					<form:option value="ROLE_MEMBER" label="회원" />
+					<form:option value="ROLE_ADMIN" label="관리자" />
+				</form:select>
+			</form:form>
+		</div>
 
 		<div class="btn-area">
-			<a href="/board/boardList" class="btn btn-list">게시판리스트</a>
-
+			<a href="/member/memberList" class="btn btn-list">회원리스트</a>
 			<div class="btn-group">
-				<a href="/board/updateForm?no=${board.no}" class="btn btn-edit">수정하기</a>
-				<a href="/board/delete?no=${board.no}" class="btn btn-delete"
+				<a href="/member/updateForm?no=${member.no}" class="btn btn-edit">수정하기</a>
+				<a href="/member/delete?no=${member.no}" class="btn btn-delete"
 					onclick="return confirm('정말 삭제하시겠습니까?')">삭제하기</a>
 			</div>
 		</div>
