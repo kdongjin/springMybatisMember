@@ -107,51 +107,34 @@ public class MemberController {
 		model.addAttribute("message", "%s 님의 회원수정실패".formatted(m.getName()));
 		return "member/failed";
 	}
-	/*
-	@GetMapping("/delete")
-	public String boardDelete(Board board, Model model) {
-		log.info("boardDelete board=" + board.toString());
-		try {
-			int count = boardService.delete(board);
-			if (count > 0) {
-				model.addAttribute("message", "%d 님의 게시판이 삭제되었습니다.".formatted(board.getNo()));
-				return "board/success";
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		model.addAttribute("message", "%d 님의 게시판이 삭제가 실패.".formatted(board.getNo()));
-		return "board/failed";
-
-	}
-
 	
-	@PostMapping("/update")
-	public String boardUpdate(Board b, Model model) {
-		log.info("boardUpdate board=" + b.toString());
+	@GetMapping("/delete")
+	public String boardDelete(Member member, Model model) {
+		log.info("memberDelete member=" + member.toString());
 		try {
-			int count = boardService.update(b);
+			int count = memberService.delete(member);
 			if (count > 0) {
-				model.addAttribute("message", "%s 님의 게시판 수정성공".formatted(b.getWriter()));
-				return "board/success";
+				model.addAttribute("message", "%d 님의 회원탈퇴".formatted(member.getNo()));
+				return "member/success";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		model.addAttribute("message", "%s 님의 게시판 수정실패".formatted(b.getWriter()));
-		return "board/failed";
-	}
+		model.addAttribute("message", "%d 님의 회원실패".formatted(member.getNo()));
+		return "member/failed";
 
+	}
+	
 	@GetMapping("/search")
-	public String boardSearch(Board board, Model model) {
-		log.info("boardSearch board" + board.toString());
+	public String boardSearch(Member member, Model model) {
+		log.info("memberSearch member" + member.toString());
 		try {
-			List<Board> boardList = boardService.search(board);
-			model.addAttribute("boardList", boardList);
+			List<Member> memberList = memberService.search(member);
+			model.addAttribute("memberList", memberList);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "board/boardList";
+		return "member/memberList";
 	}
-*/
+
 }
