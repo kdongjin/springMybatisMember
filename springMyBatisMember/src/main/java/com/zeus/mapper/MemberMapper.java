@@ -14,6 +14,7 @@ public interface MemberMapper {
 	public List<Member> list() throws Exception; 
 	public Member read(Member member) throws Exception; 
 	public int update(Member member) throws Exception; 
+	
 	public int delete(Member member) throws Exception; 
 	public int deleteAuth(Member member) throws Exception;
 }
